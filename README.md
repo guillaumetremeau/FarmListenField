@@ -21,11 +21,19 @@ Possible Improvements:
 - farm                      // Get the farm info
 - createFarm                // Create farm
 ### Worker
-- workers
-- worker
-- addWorker
-- editWorker
-- deleteWorker
+- workers: [Worker]
+- worker(id: Int!): Worker
+- addWorker(name: String!): Worker
+- deleteWorker(id: Int!): [Worker]
+- editWorker(id: Int!, name: String!): Worker
+
+```
+type Worker {
+    id: Int
+    farmId: Int
+    name: String
+}
+```
 ### Tractor
 - tractors
 - tractor
@@ -39,10 +47,10 @@ Possible Improvements:
 - editCropZone
 - deleteCropZone
 ### Activity
-- activities
-- activity
-- addActivity
-- editActivity
-- deleteActivity
+- activities: [Activity]    // Get Activities
+- activity(id: Int!): Activity
+- addActivity(cropZoneId: Int!, date: String!, activityType: ActivityType!, cropType: CropType!, workerId: Int!, tractorId: Int): Activity
+- deleteActivity(id: Int!): [Activity]
+- editActivity(id: Int!, cropZoneId: Int!, date: String!, activityType: ActivityType!, cropType: CropType!, workerId: Int!, tractorId: Int): Activity
 ### Summary
-- summary
+- summary(startDate: String!, endDate: String!): Float
