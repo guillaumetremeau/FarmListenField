@@ -3,10 +3,6 @@ import { logInfo } from "../server"
 
 let count = 0
 
-let help = function() {
-    return `mutation createFarmOwnerAccount: To create a new Farm Owner account (requires: pseudo:String, password: String)
-mutation login: To login to an account (requires: pseudo:String, password: String)`
-}
 let createFarmOwnerAccount = function(args:{pseudo: string, password: string}) {
     if (data.farmOwners.filter(farmOwner => farmOwner.pseudo === args.pseudo).length === 0){
         let id = count
@@ -30,7 +26,6 @@ let login = function(args:{pseudo: string, password: string}){
 }
 
 const FarmOwnerResolver = {
-    help: help,
     createFarmOwnerAccount: createFarmOwnerAccount,
     login: login
 }

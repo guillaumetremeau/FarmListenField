@@ -1,4 +1,4 @@
-export let FarmOwnerQuery: string = `help: String`
+export let FarmOwnerQuery: string = ``
 export let FarmOwnerMutation: string = `
     createFarmOwnerAccount(pseudo: String!, password: String!): FarmOwner
     login(pseudo: String!, password: String!): FarmOwner
