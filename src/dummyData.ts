@@ -1,34 +1,31 @@
 import data from "./database"
 
+// Use to fill in dummy data for testing
 function fillDummyData() {
-    data.coursesData = [
-        {
-            id: 1,
-            title: 'The complete Node.js Developer Course',
-            author: 'Andrew Mead, rob Percival',
-            description: 'Learn Node.js by building real-world applications with Node...',
-            topic: 'Node.js',
-            url: 'url'
-        },
-        {
-            id: 2,
-            title: 'Node.js',
-            author: 'Brad',
-            description: 'desc3',
-            topic: 'Node.js',
-            url: 'url'
-        },
-        {
-            id: 3,
-            title: 'JavaScript: Understanding',
-            author: 'Anthony',
-            description: 'Advanced JavaScript Course',
-            topic: 'JavaScript',
-            url: 'url'
-        }
-    ]
-    
-    console.log(data)
+    data.farmOwners = [{
+        id:500,
+        pseudo:"John",
+        password:"doe"
+    }],
+    data.farms = [{
+        id:500,
+        ownerId: 500,
+        name: "Farm of John doe"
+    }],
+    data.workers = [{
+        id:500,
+        farmId:500,
+        name:"Martin George"
+    },{
+        id: 501,
+        farmId: 500,
+        name: "Fil Mathias"
+    }]
+    data.tractors = [{
+        id: 500,
+        farmId:500,
+        model:"Tractout"
+    }]
 }
 
 export default fillDummyData
