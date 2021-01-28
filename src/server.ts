@@ -2,10 +2,14 @@ import express from 'express'
 import { graphqlHTTP} from 'express-graphql'
 import {buildSchema} from 'graphql'
 import fillDummyData from './dummyData'
+import ActivityResolver from './resolvers/ActivityResolver'
+import CropZoneResolver from './resolvers/CropZoneResolver'
 import FarmOwnerResolver from './resolvers/FarmOwnerResolver'
 import FarmResolver from './resolvers/FarmResolver'
 import TractorResolver from './resolvers/TractorResolver'
 import WorkerResolver from './resolvers/WorkerResolver'
+import { ActivityMutation, ActivityQuery, ActivityTypes } from './schema/Activity'
+import { CropZoneMutation, CropZoneQuery, CropZoneTypes } from './schema/CropZone'
 import { FarmMutation, FarmQuery, FarmTypes } from './schema/Farm'
 import { FarmOwnerMutation, FarmOwnerQuery, FarmOwnerTypes } from './schema/FarmOwner'
 import { TractorMutation, TractorQuery, TractorTypes } from './schema/Tractor'
@@ -19,17 +23,23 @@ export let logInfo:{isLogged: boolean, userId: number} = {
 // GraphQL Schema
 let schema = buildSchema(`
     type Query {
+        ${ActivityQuery}
+        ${CropZoneQuery}
         ${FarmOwnerQuery}
         ${FarmQuery}
         ${TractorQuery}
         ${WorkerQuery}
     }
     type Mutation {
+        ${ActivityMutation}
+        ${CropZoneMutation}
         ${FarmOwnerMutation}
         ${FarmMutation}
         ${TractorMutation}
         ${WorkerMutation}
     }
+    ${ActivityTypes}
+    ${CropZoneTypes}
     ${FarmOwnerTypes}
     ${FarmTypes}
     ${TractorTypes}
@@ -37,6 +47,8 @@ let schema = buildSchema(`
 `)
 
 let root = {
+    ...ActivityResolver,
+    ...CropZoneResolver,
     ...FarmOwnerResolver,
     ...FarmResolver,
     ...TractorResolver,
