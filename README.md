@@ -57,9 +57,9 @@ type Tractor {
 ### CropZone
 - cropZones: [CropZone] // Get a list a your crap zones
 - cropZone(id: Int!): CropZone // Get a specific crop zone info
-- addCropZone(size: Float!, name: String!): CropZone // add a crop zone
+- addCropZone(size: Float!, name: String!): CropZone // add a crop zone (size in square/meters)
 - deleteCropZone(id: Int!): [CropZone] // delete a crop zone
-- editCropZone(id: Int!, size: Float!, name: String!): CropZone // edit a crop zone
+- editCropZone(id: Int!, size: Float!, name: String!): CropZone // edit a crop zone (size in square/meters)
 ```
 type CropZone {
     id: Int
@@ -99,7 +99,7 @@ enum CropType {
 }
 ```
 ### Summary
-- summary(startDate: String!, endDate: String!): Float // Calculate the expenses summary of your activities
+- summary(startDate: String!, endDate: String!): Float // Calculate the expenses summary of your activities (in Baht)
 ##
 Possible Improvements:
 - Use uuid
